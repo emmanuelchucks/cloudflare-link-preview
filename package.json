@@ -12,8 +12,12 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
+		"@hono/standard-validator": "^0.1.2",
+		"cheerio": "^1.0.0",
+		"hono": "^4.7.6",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react-dom": "^19.0.0",
+		"valibot": "^1.0.0"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "^1.0.5",
