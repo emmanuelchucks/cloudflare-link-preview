@@ -1,11 +1,14 @@
 import { sValidator } from "@hono/standard-validator";
 import * as cheerio from "cheerio";
 import { Hono } from "hono";
+import { appendTrailingSlash } from "hono/trailing-slash";
 import * as v from "valibot";
 
 const app = new Hono().basePath("/api/");
 
-const querySchema = v.object({
+app.use(appendTrailingSlash());
+
+export const querySchema = v.object({
 	url: v.pipe(v.string(), v.url()),
 });
 
