@@ -59,9 +59,9 @@ function App() {
 			{!isPending && state?.meta && <MetaCard meta={state.meta} />}
 
 			{!isPending && state?.error && (
-				<div className="rounded-md border bg-red-50 p-4">
-					<p className="text-red-700">{state.error.message}</p>
-				</div>
+				<p className="text-red-800 dark:text-red-200">
+					{state.error.message}
+				</p>
 			)}
 		</main>
 	);
@@ -70,13 +70,13 @@ function App() {
 function MetaSkeleton() {
 	return (
 		<div className="overflow-clip rounded-md border">
-			<div className="h-96 w-full bg-[light-dark(var(--color-neutral-200),var(--color-neutral-800))] object-cover" />
+			<div className="h-96 w-full bg-neutral-200 object-cover dark:bg-neutral-800" />
 			<div className="p-4">
-				<div className="h-7 rounded-sm bg-[light-dark(var(--color-neutral-200),var(--color-neutral-800))]" />
-				<div className="mt-1 h-10 rounded-sm bg-[light-dark(var(--color-neutral-200),var(--color-neutral-800))]" />
+				<div className="h-7 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
+				<div className="mt-1 h-10 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
 				<div className="mt-2 flex flex-row items-center gap-2">
-					<div className="aspect-square h-4 rounded-full bg-[light-dark(var(--color-neutral-200),var(--color-neutral-800))]" />
-					<div className="aspect-10/1 h-5 rounded-sm bg-[light-dark(var(--color-neutral-200),var(--color-neutral-800))]" />
+					<div className="aspect-square h-4 rounded-full bg-neutral-200 dark:bg-neutral-800" />
+					<div className="aspect-10/1 h-5 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
 				</div>
 			</div>
 		</div>
