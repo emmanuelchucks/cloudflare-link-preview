@@ -3,9 +3,9 @@ import type { InferResponseType } from "hono";
 import { hc } from "hono/client";
 import { type AppType } from "../worker/index.ts";
 
-const client = hc<AppType>(import.meta.env.BASE_URL);
+const apiClient = hc<AppType>(import.meta.env.BASE_URL);
 
-type Meta = InferResponseType<typeof client.api.index.$get>;
+type Meta = InferResponseType<typeof apiClient.api.index.$get>;
 
 type ActionState =
 	| { meta: Meta; error?: never }
@@ -16,7 +16,7 @@ async function fetchMeta(
 	_previousState: ActionState,
 	formData: FormData,
 ): Promise<ActionState> {
-	const response = await client.api.index.$get({
+	const response = await apiClient.api.index.$get({
 		query: {
 			url: formData.get("url") as string,
 		},
