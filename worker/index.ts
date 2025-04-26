@@ -9,19 +9,16 @@ const app = new Hono().basePath("/api/");
 app.use(appendTrailingSlash());
 
 export const querySchema = v.object({
-	url: v.pipe(v.string(), v.url()),
+	url: v.pipe(
+		v.string(),
+		v.nonEmpty("Missing ?url=https://github.com/emmanuelchucks"),
+		v.url("Invalid url"),
+	),
 });
 
 export const route = app.get(
 	"/",
-	sValidator("query", querySchema, (result, c) => {
-		if (!result.success) {
-			return c.text(
-				"Missing ?url=https://github.com/emmanuelchucks",
-				400,
-			);
-		}
-	}),
+	sValidator("query", querySchema),
 	async (c) => {
 		const { url } = c.req.valid("query");
 
