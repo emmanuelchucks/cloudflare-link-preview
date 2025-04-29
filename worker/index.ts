@@ -2,6 +2,7 @@ import { sValidator } from "@hono/standard-validator";
 import * as cheerio from "cheerio";
 import { Hono } from "hono";
 import { appendTrailingSlash } from "hono/trailing-slash";
+import { cache } from "hono/cache";
 import * as v from "valibot";
 
 const app = new Hono().basePath("/api/");
@@ -18,12 +19,20 @@ export const querySchema = v.object({
 
 export const route = app.get(
 	"/",
+	cache({
+		cacheName: "link-preview-cache",
+		cacheControl: "max-age=3600",
+	}),
 	sValidator("query", querySchema),
 	async (c) => {
 		const { url } = c.req.valid("query");
 
 		const response = await fetch(url, {
 			signal: AbortSignal.timeout(5000),
+			headers: {
+				"User-Agent": "LinkPreviewBot/1.0",
+				Accept: "text/html",
+			},
 		});
 
 		const html = await response.text();
