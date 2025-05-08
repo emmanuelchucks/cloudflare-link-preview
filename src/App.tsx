@@ -59,9 +59,7 @@ function App() {
 			{!isPending && state?.meta && <MetaCard meta={state.meta} />}
 
 			{!isPending && state?.error && (
-				<p className="text-red-800 dark:text-red-200">
-					{state.error.message}
-				</p>
+				<p className="text-red-800 dark:text-red-200">{state.error.message}</p>
 			)}
 		</main>
 	);
@@ -88,15 +86,10 @@ function MetaCard({ meta }: { meta: Meta }) {
 		<div className="overflow-clip rounded-md border">
 			<img src={meta.image} className="h-96 w-full object-cover" />
 			<div className="p-4">
-				<h2 className="line-clamp-1 text-lg font-semibold">
-					{meta.title}
-				</h2>
+				<h2 className="line-clamp-1 text-lg font-semibold">{meta.title}</h2>
 				<p className="mt-1 line-clamp-2 text-sm">{meta.description}</p>
 				<div className="mt-2 flex flex-row items-center gap-2">
-					<img
-						src={meta.favicon}
-						className="aspect-square h-4 rounded-full"
-					/>
+					<img src={meta.favicon} className="aspect-square h-4 rounded-full" />
 					<p className="text-sm">{meta.domain}</p>
 				</div>
 			</div>
