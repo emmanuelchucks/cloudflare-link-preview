@@ -1,44 +1,44 @@
 {
-	"name": "cloudflare-link-preview",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"lint": "eslint .",
-		"format": "prettier --write .",
-		"preview": "pnpm run build && vite preview",
-		"deploy": "pnpm run build && wrangler deploy",
-		"cf-typegen": "wrangler types"
-	},
-	"dependencies": {
-		"@hono/standard-validator": "^0.1.2",
-		"cheerio": "^1.0.0",
-		"hono": "^4.7.6",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
-		"tailwindcss": "^4.1.4",
-		"valibot": "^1.0.0"
-	},
-	"devDependencies": {
-		"@cloudflare/vite-plugin": "^1.0.5",
-		"@cloudflare/workers-types": "^4.20250413.0",
-		"@eslint/js": "^9.21.0",
-		"@tailwindcss/vite": "^4.1.4",
-		"@types/react": "^19.0.10",
-		"@types/react-dom": "^19.0.4",
-		"@vitejs/plugin-react": "^4.3.4",
-		"eslint": "^9.21.0",
-		"eslint-plugin-react-hooks": "^5.1.0",
-		"eslint-plugin-react-refresh": "^0.4.19",
-		"globals": "^15.15.0",
-		"prettier": "^3.5.3",
-		"prettier-plugin-tailwindcss": "^0.6.11",
-		"typescript": "~5.7.2",
-		"typescript-eslint": "^8.24.1",
-		"vite": "^6.2.0",
-		"wrangler": "^4.10.0"
-	},
-	"packageManager": "pnpm@10.8.0"
+  "name": "cloudflare-link-preview",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "preview": "pnpm run build && vite preview",
+    "deploy": "pnpm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@hono/standard-validator": "^0.1.2",
+    "cheerio": "^1.0.0",
+    "hono": "^4.7.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.4",
+    "valibot": "^1.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.0.5",
+    "@cloudflare/workers-types": "^4.20250413.0",
+    "@eslint/js": "^9.21.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0",
+    "wrangler": "^4.10.0"
+  },
+  "packageManager": "pnpm@10.8.0"
 }
