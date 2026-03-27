@@ -4,8 +4,8 @@ import { Hono } from "hono";
 import { cache } from "hono/cache";
 import { appendTrailingSlash } from "hono/trailing-slash";
 import * as v from "valibot";
-import type { LinkPreview } from "../link-preview.ts";
-import { linkPreviewSchema } from "../link-preview.ts";
+import type { LinkPreview } from "../src/link-preview.ts";
+import { linkPreviewSchema } from "../src/link-preview.ts";
 
 const app = new Hono().basePath("/api/");
 

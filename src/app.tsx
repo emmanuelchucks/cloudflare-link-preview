@@ -1,9 +1,9 @@
 import { hc } from "hono/client";
 import { useActionState } from "react";
 import * as v from "valibot";
-import type { LinkPreview } from "../link-preview.ts";
 import type { AppType } from "../worker/index.ts";
-import { linkPreviewSchema } from "../link-preview.ts";
+import type { LinkPreview } from "./link-preview.ts";
+import { linkPreviewSchema } from "./link-preview.ts";
 
 const apiClient = hc<AppType>(import.meta.env.BASE_URL);
 
