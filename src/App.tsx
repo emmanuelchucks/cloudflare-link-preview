@@ -1,25 +1,25 @@
-import { useActionState } from "react";
-import type { InferResponseType } from "hono";
 import { hc } from "hono/client";
-import { type AppType } from "../worker/index.ts";
+import { useActionState } from "react";
+import * as v from "valibot";
+import type { LinkPreview } from "../link-preview.ts";
+import type { AppType } from "../worker/index.ts";
+import { linkPreviewSchema } from "../link-preview.ts";
 
 const apiClient = hc<AppType>(import.meta.env.BASE_URL);
 
-type Meta = InferResponseType<typeof apiClient.api.index.$get>;
+type ActionState = { error?: never; meta: LinkPreview } | { error: Error; meta?: never } | null;
 
-type ActionState =
-  | { meta: Meta; error?: never }
-  | { meta?: never; error: Error }
-  | undefined;
+async function fetchMeta(_previousState: ActionState, formData: FormData): Promise<ActionState> {
+  const url = formData.get("url");
 
-async function fetchMeta(
-  _previousState: ActionState,
-  formData: FormData,
-): Promise<ActionState> {
+  if (typeof url !== "string") {
+    return {
+      error: new Error("URL is required"),
+    };
+  }
+
   const response = await apiClient.api.index.$get({
-    query: {
-      url: formData.get("url") as string,
-    },
+    query: { url },
   });
 
   if (!response.ok) {
@@ -28,16 +28,25 @@ async function fetchMeta(
     };
   }
 
+  const payload: unknown = await response.json();
+  const parsedPayload = v.safeParse(linkPreviewSchema, payload);
+
+  if (!parsedPayload.success) {
+    return {
+      error: new Error("Invalid preview response"),
+    };
+  }
+
   return {
-    meta: await response.json(),
+    meta: parsedPayload.output,
   };
 }
 
 function App() {
-  const [state, formAction, isPending] = useActionState(fetchMeta, undefined);
+  const [state, formAction, isPending] = useActionState(fetchMeta, null);
 
   return (
-    <main className="mx-auto mt-24 grid max-w-128 gap-4 p-4">
+    <main className="mx-auto mt-24 grid max-w-lg gap-4 p-4">
       <form action={formAction} className="grid">
         <label htmlFor="url" className="sr-only">
           URL
@@ -81,15 +90,23 @@ function MetaSkeleton() {
   );
 }
 
-function MetaCard({ meta }: { meta: Meta }) {
+function MetaCard({ meta }: { meta: LinkPreview }) {
   return (
     <div className="overflow-clip rounded-md border">
-      <img src={meta.image} className="h-96 w-full object-cover" />
+      <img
+        src={meta.image}
+        alt={meta.title ?? "Link preview image"}
+        className="h-96 w-full object-cover"
+      />
       <div className="p-4">
         <h2 className="line-clamp-1 text-lg font-semibold">{meta.title}</h2>
         <p className="mt-1 line-clamp-2 text-sm">{meta.description}</p>
         <div className="mt-2 flex flex-row items-center gap-2">
-          <img src={meta.favicon} className="aspect-square h-4 rounded-full" />
+          <img
+            src={meta.favicon}
+            alt={`${meta.domain} favicon`}
+            className="aspect-square h-4 rounded-full"
+          />
           <p className="text-sm">{meta.domain}</p>
         </div>
       </div>
