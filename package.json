@@ -26,7 +26,7 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.30.2",
     "@cloudflare/workers-types": "^4.20260317.1",
-    "@kasoa/vite-plus-config": "^0.0.5",
+    "@kasoa/vite-plus-config": "^0.0.8",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

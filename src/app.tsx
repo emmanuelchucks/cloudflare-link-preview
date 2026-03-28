@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { hc } from "hono/client";
 import { useActionState } from "react";
 import * as v from "valibot";
@@ -42,7 +43,7 @@ async function fetchMeta(_previousState: ActionState, formData: FormData): Promi
   };
 }
 
-function App() {
+function App(): ReactElement {
   const [state, formAction, isPending] = useActionState(fetchMeta, null);
 
   return (

@@ -37,8 +37,8 @@ importers:
         specifier: ^4.20260317.1
         version: 4.20260317.1
       '@kasoa/vite-plus-config':
-        specifier: ^0.0.5
-        version: 0.0.5(vite-plus@0.1.14(esbuild@0.27.3)(jiti@2.6.1)(typescript@5.9.3)(vite@8.0.3(esbuild@0.27.3)(jiti@2.6.1)))(wrangler@4.78.0(@cloudflare/workers-types@4.20260317.1))
+        specifier: ^0.0.8
+        version: 0.0.8(vite-plus@0.1.14(esbuild@0.27.3)(jiti@2.6.1)(typescript@5.9.3)(vite@8.0.3(esbuild@0.27.3)(jiti@2.6.1)))(wrangler@4.78.0(@cloudflare/workers-types@4.20260317.1))
       '@tailwindcss/vite':
         specifier: ^4.2.2
         version: 4.2.2(vite@8.0.3(esbuild@0.27.3)(jiti@2.6.1))
@@ -465,8 +465,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@kasoa/vite-plus-config@0.0.5':
-    resolution: {integrity: sha512-mS9sKLL9q3GIogMVPh2F2iHExjldQVV9tVPMeo9DkW0Gp5d7W9uPLWYGXAN4Z5KO742owlUb1dkW0mWnpvgj6g==}
+  '@kasoa/vite-plus-config@0.0.8':
+    resolution: {integrity: sha512-iWRHU1biMopjlKzzt0SEx79eOGGHhNgVnyvISBTAnylyuzH+qe4NgpZsfiFH0bFTJhhQUPQRVVrCend8Vw59Ww==}
     engines: {node: '>=24'}
     peerDependencies:
       '@cloudflare/vitest-pool-workers': '>=0.13.0 <1'
@@ -2021,7 +2021,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kasoa/vite-plus-config@0.0.5(vite-plus@0.1.14(esbuild@0.27.3)(jiti@2.6.1)(typescript@5.9.3)(vite@8.0.3(esbuild@0.27.3)(jiti@2.6.1)))(wrangler@4.78.0(@cloudflare/workers-types@4.20260317.1))':
+  '@kasoa/vite-plus-config@0.0.8(vite-plus@0.1.14(esbuild@0.27.3)(jiti@2.6.1)(typescript@5.9.3)(vite@8.0.3(esbuild@0.27.3)(jiti@2.6.1)))(wrangler@4.78.0(@cloudflare/workers-types@4.20260317.1))':
     dependencies:
       vite-plus: 0.1.14(esbuild@0.27.3)(jiti@2.6.1)(typescript@5.9.3)(vite@8.0.3(esbuild@0.27.3)(jiti@2.6.1))
     optionalDependencies:
